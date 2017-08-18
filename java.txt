@@ -1,0 +1,22 @@
+java -version
+read -n1 -r -p "press ENTER to uninstall previous version of JAVA..."
+sudo apt-get purge openjdk-\*
+sudo mkdir -p /usr/local/java
+cd $HOME/Desktop
+read -n1 -r -p "press ENTER to install new JAVA.Your JAVA tar file should be on Desktop..."
+sudo cp -r jdk-8u60-linux-x64.tar.gz /usr/local/java/
+cd /usr/local/java
+sudo tar xvzf jdk-8u60-linux-x64.tar.gz
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk1.8.0_60/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/java/jdk1.8.0_60/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/java/jdk1.8.0_60/bin/javaws" 1
+sudo update-alternatives --set java /usr/local/java/jdk1.8.0_60/bin/java
+sudo update-alternatives --set javac /usr/local/java/jdk1.8.0_60/bin/javac
+sudo update-alternatives --set javaws /usr/local/java/jdk1.8.0_60/bin/javaws
+source /etc/profile
+clear
+java -version
+javac -version
+read -n1 -r -p "JAVA installation complete..."
+read -n1 -r -p "press ENTER to REBOOT system..."
+sudo shutdown -r now
